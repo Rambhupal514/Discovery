@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <script>
+        const customers = [{
+                name: 'customer1',
+                transcations: [{
+                        purchases: 120
+                    },
+                    {
+                        purchases: 120
+                    },
+                    {
+                        purchases: 120
+                    }
+
+                ]
+            },
+            {
+                name: 'customer2',
+                transcations: [{
+                        purchases: 100
+                    },
+                    {
+                        purchases: 100
+                    },
+                    {
+                        purchases: 100
+                    }
+
+                ]
+            }
+        ];
+
+        function calculateCustomerPoints(customers) {
+            for (let i = 0; i < customers.length; i++) {
+                let totalPoints = 0;
+                const transcations = customers[i].transcations;
+                for (let j = 0; j < transcations.length; j++) {
+                    const purchases = transcations[j].purchases;
+                    if (purchases <= 100 && purchases > 50) {
+                        totalPoints = totalPoints + (purchases - 50);
+                    } else if (purchases > 100) {
+                        totalPoints = totalPoints + 50 + ((purchases - 100) * 2);
+                    }
+                }
+                console.log(customers[i].name, totalPoints);
+            }
+        }
+
+        calculateCustomerPoints(customers);
+    </script>
+</body>
+
+</html>
